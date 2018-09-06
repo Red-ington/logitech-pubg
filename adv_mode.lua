@@ -10,23 +10,23 @@ local current_weapon = "none"
 
 ---- key bind ----
 
-local ump9_key = 4
-local akm_key = 5
-local m16a4_key = 7
-local m416_key = 8
+local ump9_key = nil
+local akm_key = nil
+local m16a4_key = nil
+local m416_key = nil
 local scarl_key = nil
 local uzi_key = nil
-local set_off_key = 6
+local set_off_key = 4
 
 ---- keyboard ---- Only Support logitech G Keyboard
 
-local ump9_gkey = nil  ---1 is use F1.
-local akm_gkey = nil
-local m16a4_gkey = nil
-local m416_gkey = nil
-local scarl_gkey = nil
-local uzi_gkey = nil
-local set_off_gkey = nil
+local ump9_gkey = 9  ---1 is use F1.
+local akm_gkey = 8
+local m16a4_gkey = 6
+local m416_gkey = 5
+local scarl_gkey = 7
+local uzi_gkey = 3
+local set_off_gkey = 4
 
 ---- fire key ----
 
@@ -53,9 +53,9 @@ local move = 40 ----1920*1080
 --- Your Sensitivity in Game 
 
 local vertical_sensitivity = 0.7 --- default is 0.7
-local target_sensitivity = 50 --- default is 50.0
-local scope_sensitivity = 50 --- default is 50.0
-local scope4x_sensitivity = 50 --- default is 50.0
+local target_sensitivity = 56 --- default is 50.0
+local scope_sensitivity = 56 --- default is 50.0
+local scope4x_sensitivity = 56 --- default is 50.0
 
 ---- function ----
 -- if auto_mode = true ,the guns need to switch automatic shooting mode,except m16 single.
@@ -74,7 +74,7 @@ local weapon_speed_mode = false
 local obfs_mode = false
 local interval_ratio = 0.75
 local random_seed = 1
-
+ 
 --------------------------------------------------------------------------
 ----------------        Recoil Table        ------------------------------
 ---------------- You can fix the value here ------------------------------
@@ -86,11 +86,11 @@ local all_recoil_times = 1
 local recoil_table = {}
 
 recoil_table["ump9"] = {
-    basic={28,30,30,30,37,30,31,36,37,37,37,40,40,39,39,41,41,42,44,42,43,40,41,44,40,40,41,42,43},
-    basictimes = 0.963,
+    basic={33.5,19.2,30.5,35.7,39.3, 39.0,38.7,40.2,41.8,44.0, 43.8,43.8,46.5,44.5,47.5},
+    basictimes = 1.05,
 	
-    full={28,30,30,30,37,30,31,36,37,37,37,40,40,39,39,41,41,42,44,42,43,40,41,44,40,40,41,42,43},
-    fulltimes = 0.963*0.75,
+    full={33.5,19.2,30.5,35.7,39.3, 39.0,38.7,40.2,41.8,44.0, 43.8,43.8,46.5,44.5,47.5},
+    fulltimes = 1.05*0.75,
 	
     holdbreathtimes = 1.25,
 	
@@ -104,7 +104,98 @@ recoil_table["ump9"] = {
 }
 
 recoil_table["akm"] = {
-    basic={56,40,38,44,48,55,56,61,65,65,67,68,67,71,74,70,65,66,72,74,72,71,70,70,70,72,74,76,72},
+    basic={61.3,41.2,47.5,51.0,54.5, 64.0,67.5,69.0,70.5,71.9, 71.5,73.6,79.3,79.3,81.6 ,80},
+    basictimes = 1,
+    full={28,30,30,30,37,30,31,36,37,37,37,40,40,39,39,41,41,42,44,42,43,40,41,44,40,40,41,42,43},
+
+    fulltimes = 1.0*0.75
+	
+
+    holdbreathtimes = 1.25,
+
+	
+
+    quadruple={28,30,30,30,37,30,31,36,37,37,37,40,40,39,39,41,41,42,44,42,43,40,41,44,40,40,41,42,43},
+
+    quadrupletimes = 4*0.963,
+
+	
+
+    fullof4x={28,30,30,30,37,30,31,36,37,37,37,40,40,39,39,41,41,42,44,42,43,40,41,44,40,40,41,42,43},
+
+    fullof4xtimes = 4*0.963*0.75,
+
+	
+
+    speed = 90,
+
+}
+
+
+
+recoil_table["akm"] = {
+
+    basic={    full={28,30,30,30,37,30,31,36,37,37,37,40,40,39,39,41,41,42,44,42,43,40,41,44,40,40,41,42,43},
+
+    fulltimes = 0.963*0.75,
+
+	
+
+    holdbreathtimes = 1.25,
+
+	
+
+    quadruple={28,30,30,30,37,30,31,36,37,37,37,40,40,39,39,41,41,42,44,42,43,40,41,44,40,40,41,42,43},
+
+    quadrupletimes = 4*0.963,
+
+	
+
+    fullof4x={28,30,30,30,37,30,31,36,37,37,37,40,40,39,39,41,41,42,44,42,43,40,41,44,40,40,41,42,43},
+
+    fullof4xtimes = 4*0.963*0.75,
+
+	
+
+    speed = 90,
+
+}
+
+
+
+recoil_table["akm"] = {
+
+    basic={   full={28,30,30,30,37,30,31,36,37,37,37,40,40,39,39,41,41,42,44,42,43,40,41,44,40,40,41,42,43},
+
+    fulltimes = 0.963*0.75,
+
+	
+
+    holdbreathtimes = 1.25,
+
+	
+
+    quadruple={28,30,30,30,37,30,31,36,37,37,37,40,40,39,39,41,41,42,44,42,43,40,41,44,40,40,41,42,43},
+
+    quadrupletimes = 4*0.963,
+
+	
+
+    fullof4x={28,30,30,30,37,30,31,36,37,37,37,40,40,39,39,41,41,42,44,42,43,40,41,44,40,40,41,42,43},
+
+    fullof4xtimes = 4*0.963*0.75,
+
+	
+
+    speed = 90,
+
+}
+
+
+
+recoil_table["akm"] = {
+
+    basic={},
     basictimes = 0.96,
 	
     full={56,40,38,44,48,55,56,61,65,65,67,68,67,71,74,70,65,66,72,74,72,71,70,70,70,72,74,76,72},
