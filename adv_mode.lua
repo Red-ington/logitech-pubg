@@ -130,7 +130,7 @@ recoil_table["akm"] = {
 
 	
 
-    speed = 90,
+    speed = 100,
 
 }
 
